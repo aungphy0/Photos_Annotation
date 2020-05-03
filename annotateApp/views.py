@@ -95,3 +95,25 @@ def insert(place_id, lat, lon, time, image):
         cursor.close()
         connection.close()
         print("MySQL connection is closed")
+
+#for location.html page
+def location(request):
+    pid = Data.objects.raw('select * from annotateApp_data')
+    ls = []
+    for p in pid:
+        if p.place_id in ls:
+            continue
+        else:
+            ls.append(p.place_id)
+    return render(request, 'annotateApp/location.html', {'ls' : ls, 'pid' : pid})
+
+#for time.html page 
+def time(request):
+    pdate = Data.objects.raw('select * from annotateApp_data')
+    ls_date = []
+    for d in pdate:
+        if d.time in ls_date:
+            continue
+        else:
+            ls_date.append(d.time)
+    return render(request, 'annotateApp/time.html', {'ls_date' : ls_date, 'pdate' : pdate})
