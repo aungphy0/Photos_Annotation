@@ -7,4 +7,5 @@ urlpatterns = [
     path('saveimage/', views.saveimage, name='saveimage'),
     path('location/', views.location, name='location'),
     path('time/', views.time, name='time'),
+    path('annotate/', views.annotate, name='annotate'),
 ]

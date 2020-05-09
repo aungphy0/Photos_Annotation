@@ -2,8 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Time</title>
-
+    <title>Annotation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
@@ -13,24 +12,24 @@
       <div class="row">
 
         <div class="col-lg-12">
-          <h1 class="page-header">Group By Date
-            <tr>
-              &nbsp
-              <a class="btn btn-primary" href="/">Photos</a>
-            </tr>
-          </h1>
+            <h1 class="page-header">Group By Name
+              <tr>
+                &nbsp
+                <a class="btn btn-primary" href="/">Photos</a>
+              </tr>
+            </h1>
         </div>
 
-          {% for d in ls_date %}
+          {% for i in ls_image %}
 
             <div class="row">
 
-              {% for pd in pdate %}
+              {% for pn in pname %}
 
-                {% if d == pd.time %}
+                {% if i == pn.name %}
                     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
 
-                      <img class="img-responsive" src="/media/{{pd.image}}">
+                      <img class="img-responsive" src="/media/{{pn.image}}">
                       <hr>
 
                     </div>
