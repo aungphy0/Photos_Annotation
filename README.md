@@ -42,8 +42,8 @@ DATABASES = {
           'NAME': 'Metadata',
           'USER': 'root',
           'PASSWORD': 'your_mysql_database_password',
-          'HOST': '',
-          'PORT': ''
+          'HOST': 'if_you_have_host',
+          'PORT': 'if_you_have_port'
       }
 }
 
