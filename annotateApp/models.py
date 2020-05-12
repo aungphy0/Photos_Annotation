@@ -16,8 +16,8 @@ class Image(models.Model):
 
 
 class Data(models.Model):
-    place_id = models.IntegerField()
-    lat = models.CharField(max_length=255)
-    lon = models.CharField(max_length=255)
-    time = models.CharField(max_length=255)
+    place_id = models.IntegerField(blank=True, null=True)
+    lat = models.CharField(max_length=255, blank=True, null=True)
+    lon = models.CharField(max_length=255, blank=True, null=True)
+    time = models.CharField(max_length=255, blank=True, null=True)
     image = models.CharField(max_length=255)

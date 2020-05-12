@@ -68,25 +68,29 @@ def getImage(filepath):
     data = gpsphoto.getGPSData(img)
     s = img.split("/")
     img_path = s[1] + "/" + s[2]
-    lat = data['Latitude']
-    lon = data['Longitude']
-    #time = data['UTC-Time'] + " " + data['Date']
-    time = data['Date']
-    #print(data)
-    coordinates = (data['Latitude'], data['Longitude'])
-    # result = rg.search(coordinate)
-    # r = dict(result[0])
-    # print(r['admin2'])
+    try:
+        lat = data['Latitude']
+        lon = data['Longitude']
+        #time = data['UTC-Time'] + " " + data['Date']
+        time = data['Date']
+        #print(data)
+        coordinates = (data['Latitude'], data['Longitude'])
+        # result = rg.search(coordinate)
+        # r = dict(result[0])
+        # print(r['admin2'])
 
-    locator = Nominatim(user_agent='myGeocoder')
-    #coordinates = “53.480837, -2.244914”
-    #for i in range(10):
-    location = locator.reverse(coordinates)
-    # name = location.raw['display_name']
-    # n = name.split(",")
-    # d_name = n[0] + n[1]
-    p_id = location.raw['place_id']
-    return [p_id, lat, lon, time, img_path]
+        locator = Nominatim(user_agent='myGeocoder')
+        #coordinates = “53.480837, -2.244914”
+        #for i in range(10):
+        location = locator.reverse(coordinates)
+        # name = location.raw['display_name']
+        # n = name.split(",")
+        # d_name = n[0] + n[1]
+        p_id = location.raw['place_id']
+        return [p_id, lat, lon, time, img_path]
+    except (AttributeError, KeyError, IndexError):
+        return [None, None, None, None, img_path]
+
 
 def insert(place_id, lat, lon, time, image):
     print("Inserting image into photos table")
@@ -121,13 +125,18 @@ def insert(place_id, lat, lon, time, image):
 #for location.html page
 def location(request):
     pid = Data.objects.raw('select * from annotateApp_data')
-    ls = []
+    ls_dict = {}
+    lst = []
     for p in pid:
-        if p.place_id in ls:
+        if p.place_id in ls_dict or p.place_id is None:
             continue
         else:
-            ls.append(p.place_id)
-    return render(request, 'annotateApp/location.html', {'ls' : ls, 'pid' : pid})
+            locator = Nominatim(user_agent='myGeocoder')
+            location = locator.reverse((p.lat,p.lon))
+            lst = location[0].split(",")
+            ls_dict[p.place_id] = lst[0] + " " + lst[1]
+            # ls.append(p.place_id)
+    return render(request, 'annotateApp/location.html', {'ls' : ls_dict, 'pid' : pid})
 
 #for time.html page
 def time(request):
