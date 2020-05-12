@@ -8,17 +8,20 @@ Install all these libraries
 - pip3 install gpsphoto
 - pip3 install exifread
 - pip3 install piexif
-- pip3 install geopy 
+- pip3 install geopy
 
 Install mysqlclient
 - pip3 install mysqlclient
 
 sudo pip3 install mysqlclient fails with mysql_config not found
 - sudo pip3 install libmysqlclient-dev
+
 if still get error please try this
 - sudo pip3 install python3.5-dev libmysqlclient-dev
+
 if still get error please try this
 - sudo pip3 install python3.6-dev libmysqlclient-dev
+
 And then install mysqlclient
 - sudo pip3 install mysqlclient
 
