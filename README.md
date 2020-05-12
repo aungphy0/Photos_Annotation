@@ -36,15 +36,16 @@ Create the database in mysql
 Setup database please go to project864/settings.py and check password, host and port
 
 
-DATABASES = { <br/>
+DATABASES = {
       'default': {
           'ENGINE': 'django.db.backends.mysql',
           'NAME': 'Metadata',
           'USER': 'root',
           'PASSWORD': 'your_mysql_database_password',
-
+          'HOST': '',
+          'PORT': ''
       }
-} <br/> 
+}
 
 Migration and connecting to DB
 - python3 manage.py makemigrations annotateApp
