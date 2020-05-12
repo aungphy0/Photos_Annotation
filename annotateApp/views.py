@@ -4,8 +4,8 @@ from .forms import *
 #import PIL.Image
 from PIL import Image, ExifTags
 from GPSPhoto import gpsphoto
-import reverse_geocoder as rg
-import pprint
+#import reverse_geocoder as rg
+# import pprint
 import geopy
 from geopy.geocoders import Nominatim
 #get the metadata of the image
