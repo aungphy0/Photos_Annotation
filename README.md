@@ -33,11 +33,10 @@ Create the database in mysql
 - mysql -u root -p
 - create database Metadata;
 
-Setup database please go to project864/settings.py
+Setup database please go to project864/settings.py and check password, host and port
 
-##
 
-DATABASES = {
+DATABASES = { </br>
       'default': {
           'ENGINE': 'django.db.backends.mysql',
           'NAME': 'Metadata',
