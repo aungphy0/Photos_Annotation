@@ -18,13 +18,11 @@ sudo pip3 install mysqlclient fails with mysql_config not found
 - sudo apt-get install libmysqlclient-dev
 
 if still get error please try this
-- sudo pip3 install python3.5-dev libmysqlclient-dev
-Or
+- sudo pip3 install python3.5-dev libmysqlclient-dev (or try the other one)
 - sudo apt-get install python3.5-dev libmysqlclient-dev
 
 if still get error please try this
-- sudo pip3 install python3.6-dev libmysqlclient-dev
-Or
+- sudo pip3 install python3.6-dev libmysqlclient-dev (or try the other one)
 - sudo apt-get install python3.6-dev libmysqlclient-dev
 
 And then install mysqlclient
