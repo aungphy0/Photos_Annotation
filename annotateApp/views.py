@@ -1,17 +1,14 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import *
-#import PIL.Image
 from PIL import Image, ExifTags
 from GPSPhoto import gpsphoto
-#import reverse_geocoder as rg
-# import pprint
 import geopy
 from geopy.geocoders import Nominatim
-#get the metadata of the image
 import pymysql
 import os
 
+#for auto orientation of the photos
 def rotate_image(filepath):
   try:
     image = Image.open(filepath)
@@ -32,10 +29,12 @@ def rotate_image(filepath):
     # cases: image don't have getexif
     pass
 
+#for index.html
 def index(request):
     images = os.listdir('media/photos')
     return render(request, 'annotateApp/index.html', {'images' : images})
 
+#for saveimage.html
 def saveimage(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
@@ -55,14 +54,8 @@ def saveimage(request):
         form = ImageForm()
 
     return render(request, 'annotateApp/saveimage.html', {'form' : form})
-    # num = 9
-    # s = 'media/photos/IMG-9.JPG'
-    # ls = getImage(s)
-    # #print(ls[0])
-    # insert(ls[0], ls[1], ls[2], ls[3], ls[4])
-    # return render(request, 'annotateApp/saveimage.html',{'num': ls})
 
-
+#return the medatada value of the photos
 def getImage(filepath):
     img = filepath
     data = gpsphoto.getGPSData(img)
@@ -71,27 +64,16 @@ def getImage(filepath):
     try:
         lat = data['Latitude']
         lon = data['Longitude']
-        #time = data['UTC-Time'] + " " + data['Date']
         time = data['Date']
-        #print(data)
         coordinates = (data['Latitude'], data['Longitude'])
-        # result = rg.search(coordinate)
-        # r = dict(result[0])
-        # print(r['admin2'])
-
         locator = Nominatim(user_agent='myGeocoder')
-        #coordinates = “53.480837, -2.244914”
-        #for i in range(10):
         location = locator.reverse(coordinates)
-        # name = location.raw['display_name']
-        # n = name.split(",")
-        # d_name = n[0] + n[1]
         p_id = location.raw['place_id']
         return [p_id, lat, lon, time, img_path]
     except (AttributeError, KeyError, IndexError):
         return [None, None, None, None, img_path]
 
-
+#insert the metadata into db
 def insert(place_id, lat, lon, time, image):
     print("Inserting image into photos table")
     try:
@@ -117,7 +99,6 @@ def insert(place_id, lat, lon, time, image):
 
 
     finally:
-        #if (connection.is_connected()):
         cursor.close()
         connection.close()
         print("MySQL connection is closed")
@@ -135,7 +116,7 @@ def location(request):
             location = locator.reverse((p.lat,p.lon))
             lst = location[0].split(",")
             ls_dict[p.place_id] = lst[0] + " " + lst[1]
-            # ls.append(p.place_id)
+
     return render(request, 'annotateApp/location.html', {'ls' : ls_dict, 'pid' : pid})
 
 #for time.html page
@@ -149,6 +130,7 @@ def time(request):
             ls_date.append(d.time)
     return render(request, 'annotateApp/time.html', {'ls_date' : ls_date, 'pdate' : pdate})
 
+#for annotete.html page 
 def annotate(request):
     pname = Data.objects.raw('select * from annotateApp_image')
     ls_image = []
