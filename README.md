@@ -49,6 +49,7 @@ DATABASES = {
 }
 
 # Go to annotateApp/views.py and set the db password
+
 def insert(place_id, lat, lon, time, image):
 -    print("Inserting image into photos table")
 -    try:
