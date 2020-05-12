@@ -9,6 +9,7 @@ Install all these libraries
 - pip3 install exifread
 - pip3 install piexif
 - pip3 install geopy
+- pip3 install PyMySQL 
 
 Install mysqlclient
 - sudo pip3 install mysqlclient
