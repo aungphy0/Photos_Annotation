@@ -9,7 +9,7 @@ Install all these libraries
 - pip3 install exifread
 - pip3 install piexif
 - pip3 install geopy
-- pip3 install PyMySQL 
+- pip3 install PyMySQL
 
 Install mysqlclient
 - sudo pip3 install mysqlclient
@@ -35,12 +35,14 @@ Create the database in mysql
 
 Setup database please go to project864/settings.py
 
+##
 DATABASES = {
       'default': {
           'ENGINE': 'django.db.backends.mysql',
           'NAME': 'Metadata',
           'USER': 'root',
-          'PASSWORD': 'your_mysql_database_password'
+          'PASSWORD': 'your_mysql_database_password',
+
       }
 }
 
