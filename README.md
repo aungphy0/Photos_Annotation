@@ -34,7 +34,8 @@ Create the database in mysql
 - create database Metadata;
 
 Setup database please go to project864/settings.py and check password, host and port
-- error for the database connection, pleaes check password, host and port 
+- error for the database connection, pleaes check password, host and port
+- default HOST : '127.0.0.1' , default PORT : '3306'
 
 DATABASES = {
       'default': {
