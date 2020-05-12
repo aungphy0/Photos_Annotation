@@ -25,3 +25,15 @@ you will see something like this
 
 And then run the following command
 - python3 manage.py migrate
+
+you will see something like this
+- Operations to perform:
+- Apply all migrations: admin, annotateApp, auth, contenttypes, sessions
+
+You are all set for the database connection!
+
+To run the application
+- python3 manage.py runserver
+
+To test the application
+- go to the browser and type localhost:8000
