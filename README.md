@@ -36,6 +36,7 @@ Create the database in mysql
 Setup database please go to project864/settings.py
 
 ##
+
 DATABASES = {
       'default': {
           'ENGINE': 'django.db.backends.mysql',
