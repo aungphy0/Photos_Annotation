@@ -27,7 +27,7 @@ And then install mysqlclient
 
 Create the database in mysql
 - mysql -u root -p
-- create database Metadata
+- create database Metadata;
 
 Setup database please go to project864/settings.py
 
