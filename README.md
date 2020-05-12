@@ -8,20 +8,20 @@ Install mysqlclient
 
 Setup database please go to project864/settings.py
 
-  DATABASES = {
+DATABASES = {
       'default': {
           'ENGINE': 'django.db.backends.mysql',
           'NAME': 'Metadata',
           'USER': 'root',
           'PASSWORD': 'your_mysql_database_password'
       }
-  }
+}
 
 Migration and connecting to DB
 - python3 manage.py makemigrations annotateApp
 
 you will see something like this
-annotateApp/migrations/0003_auto_20200512_0556.py
+- annotateApp/migrations/0003_auto_20200512_0556.py
 
 And then run the following command
 - python3 manage.py migrate
