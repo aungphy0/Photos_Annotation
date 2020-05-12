@@ -48,14 +48,14 @@ DATABASES = {
       }
 }
 
-Go to annotateApp/views.py
-##def insert(place_id, lat, lon, time, image):
-##    print("Inserting image into photos table")
-##    try:
-##        connection = pymysql.connect(host='localhost',
-##                                     database='Metadata',
-##                                     user='root',
-##                                     password='')
+##Go to annotateApp/views.py
+def insert(place_id, lat, lon, time, image):
+    print("Inserting image into photos table")
+    try:
+        connection = pymysql.connect(host='localhost',
+                                     database='Metadata',
+                                     user='root',
+                                     password='')
 
 Migration and connecting to DB
 - python3 manage.py makemigrations annotateApp
