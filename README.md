@@ -1,12 +1,12 @@
 # Photos Annotation App
 
-- If Django is not installed yet on your machine, please install it by following command
-  sudo pip3 install -U django==2.2.12
+If Django is not installed yet on your machine, please install it by following command
+- sudo pip3 install -U django==2.2.12
 
-- Install mysqlclient
-  pip3 install mysqlclient
+Install mysqlclient
+- pip3 install mysqlclient
 
-- Setup database please go to project864/settings.py
+Setup database please go to project864/settings.py
 
   DATABASES = {
       'default': {
@@ -17,11 +17,11 @@
       }
   }
 
-- Migration and connecting to DB
-  python3 manage.py makemigrations annotateApp
+Migration and connecting to DB
+- python3 manage.py makemigrations annotateApp
 
-  you will see something like this
-  annotateApp/migrations/0003_auto_20200512_0556.py
+you will see something like this
+annotateApp/migrations/0003_auto_20200512_0556.py
 
-  and then run the following command
-  python3 manage.py migrate
+And then run the following command
+- python3 manage.py migrate
